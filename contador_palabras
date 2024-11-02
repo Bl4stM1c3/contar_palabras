@@ -1,0 +1,49 @@
+# Crea un programa que cuente cuantas veces se repite cada palabra
+# * y que muestre el recuento final de todas ellas.
+# * - Los signos de puntuación no forman parte de la palabra.
+# * - Una palabra es la misma aunque aparezca en mayúsculas y minúsculas.
+# * - No se pueden utilizar funciones propias del lenguaje que
+# *   lo resuelvan automáticamente
+
+#El siguiente ejericico no está planteado como una funcion
+
+#Declaramos las variables
+texto = """Python is an easy to learn, powerful programming languaje.
+It has efficient high-level data structures and a simple but effective approach to object-oriented programming
+Python`s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal languaje for scrpting and rapid application development."""
+
+signos_puntuacion = ['.', ',', '!', '?', ':', ';', '¿', '¡', '"', "'"]
+
+texto_limpio = ""
+
+palabras = []
+
+palabra = ""
+
+diccionario = {}
+
+#Eliminamos del texto los signos de puntuacion y las letras mayusculas
+for c in texto:
+  if c not in signos_puntuacion:
+    texto_limpi += c.lower()
+
+#Generamos una lista de palabras del texto sin utilizar el metodo .split()
+for i in texto_limpio:
+  if i != " ":
+    palabra += i
+  else:
+    if palabra:
+      palabras.append(palabra)
+      palabra = ""
+if palabra:
+  palabras.append(palabra)
+
+#Formamos el diccionario donde se almacenaran las palabras con la frecuencia en la que aparecen en el texto
+for palabra in palabras:
+  if palabra in diccionario:
+    diccionario[palabra] += 1
+  else:
+    diccionario[palabra] = 1
+
+#Mostramos el diccionario por pantalla
+print(diccionario)
